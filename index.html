@@ -3,30 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mustafa Enes Kayacı - Portfolio</title>
+    <title>Mustafa Enes Kayacı - AI & Python Developer Portfolio</title>
+<meta name="description" content="Explore the portfolio of Mustafa Enes Kayacı, an AI & Python Developer specializing in prompt engineering and building AI-powered automations. View my projects and skills.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="assets/js/background-graph.js"></script>
 </head>
 <body>
+    <div id="preloader">
+        <div id="percentage">0%</div>
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar-fill"></div>
+        </div>
+    </div>
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">Mustafa Enes Kayacı</a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="notes.html">Study Notes</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="m3-button m3-button--filled">Home</a></li>
+                    <li><a href="notes.html" class="m3-button m3-button--text">Study Notes</a></li>
+                    <li><a href="blog.html" class="m3-button m3-button--text">Blog</a></li>
+                </ul>
+            </div>
+
+
         </nav>
     </header>
 
     <main>
         <section class="hero">
+            <h1 style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">Mustafa Enes Kayacı - AI & Python Developer Portfolio</h1>
             <div class="hero-content">
-                <h1>Hi, I'm <span>Mustafa Enes Kayacı</span></h1>
-                <h2>AI & Python Developer</h2>
+                <h2>Hi, I'm <span>Mustafa Enes Kayacı</span></h2>
+                <h3>AI & Python Developer</h3>
                 <p>Passionate about leveraging artificial intelligence and Python to build innovative solutions and automate complex tasks.</p>
 
                 <div class="social-icons">
@@ -79,18 +101,58 @@
             </div>
         </section>
 
-        <!-- Contact Section Placeholder -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="about-content">
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/mustafa-enes-kayaci/" target="_blank" style="color: var(--accent-color); text-decoration: none;">linkedin.com/in/mustafa-enes-kayaci/</a></p>
-            </div>
-        </section>
+
     </main>
 
     <!-- Optional: Footer -->
     <footer>
         <!-- Add footer content here if needed -->
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+
+                        const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamburgerMenu && navMenu) {
+                hamburgerMenu.addEventListener('click', function() {
+                    // Toggle active class on both the icon and the menu
+                    hamburgerMenu.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+
+                    if (navMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // Existing Intersection Observer for fade-in animations
+            const sections = document.querySelectorAll('section');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        entry.target.classList.remove('hidden');
+                    } else {
+                        // Optional: remove 'show' class if you want the animation to replay on scroll up
+                        // entry.target.classList.remove('show');
+                        // entry.target.classList.add('hidden');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the item is visible
+            });
+
+            sections.forEach(section => {
+                section.classList.add('hidden'); // Add hidden class initially
+                observer.observe(section);
+            });
+        });
+    </script>
+    <script src="assets/js/animations.js"></script>
 </body>
 </html>

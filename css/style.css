@@ -584,6 +584,10 @@ section h2::after {
         font-size: 1.5rem;
     }
 
+    .notes-section p {
+        font-size: 1rem;
+    }
+
     .hero-content p {
         font-size: 1rem;
     }
@@ -639,4 +643,44 @@ section h2::after {
     .notes-container h1 {
         font-size: 2rem;
     }
+
+    .notes-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .notes-section p {
+        font-size: 1rem;
+    }
+}
+/* --- Footer Styling --- */
+.site-footer {
+    padding: 2rem 5%;
+    background-color: var(--md-sys-color-surface-container);
+    border-top: 1px solid var(--md-sys-color-outline);
+    margin-top: 4rem; /* Add some space above the footer */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--md-sys-color-primary);
+    font-weight: 500;
+    margin: 0 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright p {
+    font-size: 0.9rem;
+    color: var(--md-sys-color-on-surface-variant);
 }

@@ -9,23 +9,38 @@
 
 <url>
   <loc>https://enesy.online/</loc>
-  <lastmod>2025-09-23T05:22:20+00:00</lastmod>
+  <lastmod>2025-09-27T12:26:51+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://enesy.online/index.html</loc>
-  <lastmod>2025-09-23T05:22:20+00:00</lastmod>
+  <lastmod>2025-09-27T12:26:51+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://enesy.online/notes.html</loc>
-  <lastmod>2025-09-23T05:22:20+00:00</lastmod>
+  <lastmod>2025-09-27T12:26:51+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://enesy.online/blog.html</loc>
-  <lastmod>2025-09-23T05:22:20+00:00</lastmod>
+  <lastmod>2025-09-27T12:26:51+00:00</lastmod>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://enesy.online/blog/age-of-autonomous-agents.html</loc>
+  <lastmod>2025-09-27T12:26:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://enesy.online/blog/human-edge-5-skills-for-ai-era.html</loc>
+  <lastmod>2025-09-27T12:26:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://enesy.online/blog/how-large-language-models-work.html</loc>
+  <lastmod>2025-09-27T12:26:51+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 

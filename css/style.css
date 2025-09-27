@@ -338,6 +338,7 @@ section h2::after {
     border-radius: 12px;
     position: relative;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--md-sys-color-outline); /* Add M3 outline */
 }
 
 .about-content::before {
@@ -683,4 +684,40 @@ section h2::after {
 .footer-copyright p {
     font-size: 0.9rem;
     color: var(--md-sys-color-on-surface-variant);
+}
+
+/* --- Contact Section Styling --- */
+.contact-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--md-sys-color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--md-sys-color-outline);
+}
+
+.contact-content p {
+    font-size: 1.1rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.contact-linkedin-btn {
+    font-size: 1.1rem !important;
+    padding: 12px 24px !important;
+}
+
+.privacy-link {
+    font-size: 0.9rem !important;
+    margin-top: 1rem;
+}
+
+.privacy-link a {
+    color: var(--md-sys-color-primary);
+    text-decoration: underline;
 }

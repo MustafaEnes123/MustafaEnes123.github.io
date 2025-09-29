@@ -1,0 +1,773 @@
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--md-sys-color-background, #ddead1); /* Uses theme background */
+    display: flex;
+    flex-direction: column; /* Add this line */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+#percentage {
+    font-family: 'Courier New', Courier, monospace; /* Retro font */
+    font-size: 3rem;
+    color: var(--md-sys-color-primary, #4b6043); /* Uses theme primary color */
+    font-weight: bold;
+}
+
+#preloader.loaded {
+    opacity: 0;
+    pointer-events: none; /* Make it unclickable when invisible */
+}
+
+/* Entrance Animation Styles */
+header, main {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+header.visible, main.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger the animation for header and main */
+main.visible {
+    transition-delay: 0.2s;
+}
+
+/* New Progress Bar Styles */
+#preloader .progress-bar-container {
+    width: 250px;
+    height: 20px;
+    border: 2px solid var(--md-sys-color-primary, #4b6043);
+    margin-top: 20px;
+    border-radius: 15px / 50%; /* Creates a slightly irregular, hand-drawn look */
+    padding: 2px;
+    box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.1);
+}
+
+#preloader .progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background-color: var(--md-sys-color-primary, #4b6043);
+    border-radius: 10px / 50%;
+    /* This creates the sketchy, filled-in look */
+    background-image: linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1) 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
+    transition: width 0.1s linear; /* Smooth fill animation */
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-body);
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    position: relative;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Apply expressive font to all headings */
+h1, h2, h3, h4, h5, h6, .navbar .logo {
+    font-family: var(--font-family-headline);
+    font-weight: 700; /* Bolder weight for headlines */
+}
+
+
+
+
+
+
+/* Navbar Styling */
+header {
+    position: relative;
+    z-index: 9999;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: transparent;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    box-shadow: none;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--md-sys-color-on-surface);
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 2rem;
+}
+
+/* Material 3 Navigation Buttons */
+.m3-button {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px; /* full pill shape */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-align: center;
+}
+
+/* 1. Filled Button Style (for active links) */
+.m3-button--filled {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border-color: var(--md-sys-color-primary);
+}
+.m3-button--filled:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* 2. Tonal Button Style */
+.m3-button--tonal {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+.m3-button--tonal:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+/* 3. Elevated Button Style */
+.m3-button--elevated {
+    background-color: var(--md-sys-color-surface-container-low);
+    color: var(--md-sys-color-primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.m3-button--elevated:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* 4. Outlined Button Style */
+.m3-button--outlined {
+    border-color: var(--md-sys-color-outline);
+    color: var(--md-sys-color-primary);
+}
+.m3-button--outlined:hover {
+    background-color: rgba(var(--md-sys-color-primary-rgb), 0.08); /* Use an RGB version of your primary color for transparency */
+}
+
+/* 5. Text Button Style (Default for inactive links) */
+.m3-button--text {
+    color: var(--md-sys-color-primary);
+}
+.m3-button--text:hover {
+    background-color: rgba(var(--md-sys-color-primary-rgb), 0.08);
+}
+
+.m3-button:active {
+    transform: scale(0.97);
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 2rem 5%;
+    gap: 3rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.hero-content {
+    flex: 1;
+    min-width: unset;
+    text-align: left;
+    background-color: var(--md-sys-color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 100px;
+    height: 4px;
+    background-color: var(--md-sys-color-primary);
+    border-radius: 2px;
+}
+
+.hero-content::after {
+    content: '';
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 100px;
+    height: 4px;
+    background-color: var(--md-sys-color-primary);
+    border-radius: 2px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--md-sys-color-on-background);
+}
+
+.hero-content h1 span {
+    color: var(--md-sys-color-primary);
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-image-placeholder {
+    width: 300px; /* Adjust size as needed */
+    height: 300px;
+    background-color: var(--md-sys-color-primary); /* Placeholder color, can be removed if image always present */
+    border-radius: 50%; /* Make the shape a perfect circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Removed text-specific styling: color, font-size, font-weight */
+    overflow: hidden; /* Hide any overflow if an image is placed */
+    box-shadow: 0 0 25px var(--md-sys-color-primary-container);
+}
+
+
+
+.btn {
+    display: inline-block;
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--md-sys-color-primary-container);
+    transform: translateY(-2px);
+}
+
+/* General Section Styling */
+section {
+    padding: 4rem 5%;
+    background-color: transparent;
+    border-radius: 16px;
+    box-shadow: none;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    color: var(--md-sys-color-primary);
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background-color: var(--md-sys-color-primary);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* About Section */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--md-sys-color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--md-sys-color-outline); /* Add M3 outline */
+}
+
+.about-content::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 100px;
+    height: 4px;
+    background-color: var(--md-sys-color-primary);
+    border-radius: 2px;
+}
+
+.about-content::after {
+    content: '';
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 100px;
+    height: 4px;
+    background-color: var(--md-sys-color-primary);
+    border-radius: 2px;
+}
+
+.about-content h3 {
+    font-size: 1.8rem;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 1.5rem;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Certifications Section */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.certification-card {
+    background-color: var(--md-sys-color-surface); /* Use the main surface color */
+    padding: 1.5rem;
+    border-radius: 12px; /* M3 Medium corner radius */
+    border: 1px solid var(--md-sys-color-outline); /* Add M3 outline */
+    text-align: center;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.certification-card:hover {
+    background-color: var(--md-sys-color-surface-container-low);
+    transform: translateY(-4px); /* Add this line to lift the card on hover */
+    box-shadow: none; /* Remove the old glow/shadow effect */
+}
+
+.certification-card h3 {
+    font-size: 1.3rem;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 0.5rem;
+}
+
+.certification-card p {
+    font-size: 0.95rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.certification-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Notes Page Specific Styling */
+.notes-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--md-sys-color-surface);
+    border-radius: 8px;
+}
+
+.notes-container h1 {
+    font-size: 3rem;
+    color: var(--md-sys-color-primary);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.notes-section {
+    margin-bottom: 3rem;
+    border-radius: 8px;
+}
+
+.notes-section h2 {
+    font-size: 2rem;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.notes-section p {
+    font-size: 1.1rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row; /* Keep logo and hamburger on one line */
+        justify-content: space-between;
+    }
+
+    /* --- Full-Screen Overlay Menu --- */
+
+    .navbar .nav-menu {
+        position: fixed; /* Covers the entire screen */
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--md-sys-color-surface-container-high); /* Lighter background */
+        z-index: 99999; /* Extremely high z-index */
+        
+        /* Center the links */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        /* Hide it by default */
+        transform: translateY(-100%); /* Open from top */
+        visibility: hidden;
+        transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1), visibility 0.5s; /* Slower transition */
+    }
+
+    .navbar .nav-menu.active {
+        transform: translateY(0); /* Open from top */
+        visibility: visible;
+    }
+
+    /* Adjust nav links for the overlay */
+    .navbar .nav-links {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar .nav-links li {
+        margin: 1rem 0; /* Reduced spacing */
+    }
+    
+    .navbar .nav-links a {
+        font-size: 1.5rem; /* Slightly smaller links */
+        color: var(--md-sys-color-on-surface); /* Darker text color */
+    }
+
+    /* --- Hamburger Icon Styling --- */
+    
+    .hamburger-menu {
+        display: flex; /* Show hamburger icon */
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
+        position: relative; /* Needed for z-index to apply */
+    }
+
+    .hamburger-menu .bar {
+        width: 100%;
+        height: 4px; /* Slightly thicker bars */
+        background-color: var(--md-sys-color-on-surface-variant); /* Darker color */
+        transition: all 0.4s ease; /* Slower transition */
+    }
+
+    /* Animate hamburger to an 'X' when active */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg); /* Adjust translateY for thicker bars */
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg); /* Adjust translateY for thicker bars */
+    }
+
+    /* Hero Section */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 2%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-image-placeholder {
+        width: 250px;
+        height: 250px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    section {
+        padding: 3rem 2%;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .about-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .notes-container {
+        padding: 1.5rem;
+    }
+
+    .notes-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .notes-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .notes-section p {
+        font-size: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .certification-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .certification-card p {
+        font-size: 0.9rem;
+    }
+
+    .notes-container h1 {
+        font-size: 2rem;
+    }
+
+    .notes-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .notes-section p {
+        font-size: 1rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .social-icons a {
+        font-size: 1.5rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    .notes-container h1 {
+        font-size: 2rem;
+    }
+
+    .notes-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .notes-section p {
+        font-size: 1rem;
+    }
+}
+/* --- Footer Styling --- */
+.site-footer {
+    padding: 2rem 5%;
+    background-color: var(--md-sys-color-surface-container);
+    border-top: 1px solid var(--md-sys-color-outline);
+    margin-top: 4rem; /* Add some space above the footer */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--md-sys-color-primary);
+    font-weight: 500;
+    margin: 0 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright p {
+    font-size: 0.9rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* --- Contact Section Styling --- */
+.contact-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--md-sys-color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--md-sys-color-outline);
+}
+
+.contact-content p {
+    font-size: 1.1rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.contact-linkedin-btn {
+    font-size: 1.1rem !important;
+    padding: 12px 24px !important;
+}
+
+.privacy-link {
+    font-size: 0.9rem !important;
+    margin-top: 1rem;
+}
+
+.privacy-link a {
+    color: var(--md-sys-color-primary);
+    text-decoration: underline;
+}
+/* --- Shopping Section Styling --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card {
+    background-color: var(--md-sys-color-surface);
+    padding: 2rem 1.5rem;
+    border-radius: 16px; /* More prominent radius */
+    border: 1px solid var(--md-sys-color-outline);
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h3 {
+    font-size: 1.4rem;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 1rem;
+}
+
+.product-card p {
+    font-size: 1rem;
+    color: var(--md-sys-color-on-surface-variant);
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.product-card .product-cta {
+    display: inline-block;
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    align-self: center;
+}

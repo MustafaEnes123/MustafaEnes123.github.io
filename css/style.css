@@ -473,6 +473,10 @@ section h2.section-title::after {
         font-size: 2rem;
         color: var(--color-text-primary);
     }
+
+    .side-by-side-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Preloader Styles */

@@ -37,6 +37,6 @@
   --md-sys-color-surface-container-high: #EAEBE5;
   --md-sys-color-surface-container-highest: #E4E5E0;
 
-  --font-family-headline: 'Lora', serif;
-  --font-family-body: 'Inter', sans-serif;
+  --font-family-headline: 'Source Code Pro', monospace;
+  --font-family-body: 'Source Code Pro', monospace;
 }

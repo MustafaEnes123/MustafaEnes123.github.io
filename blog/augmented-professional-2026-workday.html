@@ -14,6 +14,9 @@
     <!-- Font Awesome for social icons (if needed on this page) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <noscript>
+        <style>#preloader{display:none!important} header, main, footer{opacity:1!important}</style>
+    </noscript>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7KFJSLX0E"></script>
 <script>
@@ -27,7 +30,7 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="tsparticles"></div>
+    <!-- particles removed for minimalist light theme -->
     <div id="preloader">
         <div id="percentage">0%</div>
         <div class="progress-bar-container">
@@ -37,12 +40,12 @@
     <header>
         <nav class="navbar">
             
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="nav-menu">
+            <button class="hamburger-menu" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+            </button>
+            <div class="nav-menu" id="primary-nav">
                 <ul class="nav-links">
                     <li><a href="../index.html" class="m3-button m3-button--text">Home</a></li>
                     <li><a href="../notes.html" class="m3-button m3-button--text">Study Notes</a></li>
@@ -87,25 +90,8 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const hamburgerMenu = document.querySelector('.hamburger-menu');
-            const navMenu = document.querySelector('.nav-menu');
-
-            if (hamburgerMenu && navMenu) {
-                hamburgerMenu.addEventListener('click', function() {
-                    navMenu.classList.toggle('active');
-
-                    if (navMenu.classList.contains('active')) {
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-        });
+        // Page behavior handled in external JS (animations.js)
     </script>
     <script src="../assets/js/animations.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-    <script src="../assets/js/particles-config.js"></script>
+    <!-- particles removed for minimalist light theme -->
 </body>

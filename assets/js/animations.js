@@ -4,31 +4,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const percentageText = document.getElementById('percentage');
     const progressBar = document.getElementById('progress-bar');
     const mainContent = document.querySelectorAll('header, main, footer');
+    const hamburgerBtn = document.querySelector('.hamburger-menu');
+    const navMenu = document.getElementById('primary-nav');
 
     let currentPercentage = 0;
+    let revealed = false;
+    const MAX_PRELOAD_MS = 2500; // safety fallback
 
     const updatePercentage = () => {
-        if (currentPercentage <= 100) {
-            percentageText.textContent = currentPercentage + '%';
-            progressBar.style.width = currentPercentage + '%';
-            currentPercentage++;
-        } else {
-            clearInterval(interval);
-            preloader.classList.add('loaded');
-
-            setTimeout(() => {
-                mainContent.forEach(el => {
-                    el.classList.add('visible');
-                });
-                // Start typing effect after content is visible
-                if (document.querySelector('.hero-content')) { // Only run on homepage
-                    typeOutAll();
-                }
-            }, 500);
+        try {
+            if (currentPercentage <= 100) {
+                if (percentageText) percentageText.textContent = currentPercentage + '%';
+                if (progressBar) progressBar.style.width = currentPercentage + '%';
+                currentPercentage++;
+            } else {
+                finishPreloader();
+            }
+        } catch (err) {
+            console.error('Preloader error', err);
+            finishPreloader();
         }
     };
 
     const interval = setInterval(updatePercentage, 20);
+    setTimeout(() => { if (!revealed) finishPreloader(); }, MAX_PRELOAD_MS);
+
+    function finishPreloader() {
+        if (revealed) return;
+        revealed = true;
+        clearInterval(interval);
+        if (preloader) preloader.classList.add('loaded');
+        setTimeout(() => {
+            mainContent.forEach(el => el.classList.add('visible'));
+            if (document.querySelector('.hero-content')) {
+                try { typeOutAll(); } catch (e) { console.warn('Typing failed', e); }
+            }
+        }, 250);
+    }
 
     // Typing effect
     function typeOutAll() {
@@ -83,5 +95,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         typeNext();
+    }
+
+    // Mobile hamburger behavior: toggle aria-expanded, focus management, escape to close, click-outside to close
+    try {
+        if (hamburgerBtn && navMenu) {
+            function closeNav() {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                hamburgerBtn.focus();
+            }
+
+            hamburgerBtn.addEventListener('click', function(e) {
+                const expanded = this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                this.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                    const firstLink = navMenu.querySelector('a');
+                    if (firstLink) firstLink.focus();
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    closeNav();
+                }
+            });
+
+            // Click outside to close
+            document.addEventListener('click', function(e) {
+                if (!navMenu || !hamburgerBtn) return;
+                if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    closeNav();
+                }
+            });
+        }
+    } catch (err) {
+        console.warn('Hamburger initialization failed', err);
     }
 });

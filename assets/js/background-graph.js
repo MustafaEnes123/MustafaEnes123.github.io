@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+    if (typeof d3 === 'undefined') {
+        console.warn('d3 is not loaded; background-graph.js will not run.');
+        return;
+    }
     const width = window.innerWidth;
     const height = window.innerHeight;
 

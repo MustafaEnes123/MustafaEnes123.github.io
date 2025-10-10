@@ -15,6 +15,10 @@
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <noscript>
+        <style>#preloader{display:none!important} header, main, footer{opacity:1!important}</style>
+    </noscript>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7KFJSLX0E"></script>
 <script>
@@ -37,12 +41,12 @@
     <header>
         <nav class="navbar">
             
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="nav-menu">
+            <button class="hamburger-menu" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+            </button>
+            <div class="nav-menu" id="primary-nav">
                 <ul class="nav-links">
                     <li><a href="index.html" class="m3-button m3-button--filled">Home</a></li>
                     <li><a href="notes.html" class="m3-button m3-button--text">Study Notes</a></li>
@@ -58,17 +62,17 @@
 
     <main>
         <section class="hero">
-            <h1 style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">Mustafa Enes Kayacı - AI & Python Developer Portfolio</h1>
+            <h1 class="visually-hidden">Mustafa Enes Kayacı - AI & Python Developer Portfolio</h1>
             <div class="hero-content">
                 <h2>Hi, I'm <span>Mustafa Enes Kayacı</span></h2>
                 <h3>AI & Python Developer</h3>
                 <p>Passionate about leveraging artificial intelligence and Python to build innovative solutions and automate complex tasks.</p>
 
                 <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/mustafa-enes-kayaci/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/MustafaEnes123" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/eneskayaci09/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/Enes2028Mustafa" target="_blank" aria-label="X"><i class="fab fa-xing"></i></a>
+                    <a href="https://www.linkedin.com/in/mustafa-enes-kayaci/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/MustafaEnes123" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/eneskayaci09/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/Enes2028Mustafa" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x"></i></a>
                 </div>
             </div>
             <div class="hero-image-container">
@@ -145,7 +149,7 @@
             <section id="contact">
                 <div class="contact-content">
                     <p>I'm always open to connecting with like-minded individuals and exploring new opportunities. The best way to reach me is through my professional network.</p>
-                    <a href="https://www.linkedin.com/in/mustafa-enes-kayaci/" target="_blank" class="m3-button m3-button--filled contact-linkedin-btn">
+                    <a href="https://www.linkedin.com/in/mustafa-enes-kayaci/" target="_blank" rel="noopener noreferrer" class="m3-button m3-button--filled contact-linkedin-btn">
                         Connect on LinkedIn
                     </a>
                     <p class="privacy-link">
@@ -172,26 +176,7 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-
-
-                        const hamburgerMenu = document.querySelector('.hamburger-menu');
-            const navMenu = document.querySelector('.nav-menu');
-
-            if (hamburgerMenu && navMenu) {
-                hamburgerMenu.addEventListener('click', function() {
-                    // Toggle active class on both the icon and the menu
-                    hamburgerMenu.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-
-                    if (navMenu.classList.contains('active')) {
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-
-            // Existing Intersection Observer for fade-in animations
+            // Intersection Observer for fade-in animations
             const sections = document.querySelectorAll('section');
 
             const observer = new IntersectionObserver(entries => {
@@ -199,24 +184,17 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('show');
                         entry.target.classList.remove('hidden');
-                    } else {
-                        // Optional: remove 'show' class if you want the animation to replay on scroll up
-                        // entry.target.classList.remove('show');
-                        // entry.target.classList.add('hidden');
                     }
                 });
-            }, {
-                threshold: 0.1 // Trigger when 10% of the item is visible
-            });
+            }, { threshold: 0.1 });
 
             sections.forEach(section => {
-                section.classList.add('hidden'); // Add hidden class initially
+                section.classList.add('hidden');
                 observer.observe(section);
             });
         });
     </script>
     <script src="assets/js/animations.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-    <script src="assets/js/particles-config.js"></script>
+    <!-- particles removed for minimalist light theme -->
 </body>
 </html>

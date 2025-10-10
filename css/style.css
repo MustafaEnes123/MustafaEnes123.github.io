@@ -17,6 +17,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px; /* Establish a base rem unit */
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 body {
     line-height: 1.6;
@@ -72,12 +73,14 @@ input, button, textarea, select {
 }
 
 body {
-    background-color: var(--color-background);
+    /* background-color set to transparent to show particles */
+    background-color: transparent;
     color: var(--color-text-primary);
     font-family: var(--font-family-body);
+    overflow-x: hidden; /* Prevent horizontal scroll from marquee */
 }
 
-/* tsParticles removed: no animated particle backgrounds in the light theme */
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-headings);
@@ -111,26 +114,18 @@ section + section {
     margin-top: var(--space-l);
 }
 
-.side-by-side-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-l);
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 0 var(--space-l); /* Add horizontal padding to align with other sections */
-}
-
-.side-by-side-container section {
-    padding-top: 0;
-    padding-bottom: 0;
-}
+/* Removed .side-by-side-container — layout changed to vertical stacking for About and Contact */
 
 /* Header & Navigation */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-m) var(--space-l);
+    /* Align vertically with avatar */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: var(--space-l);
+    padding-right: var(--space-l);
     max-width: var(--content-width);
     margin: 0 auto;
     background-color: transparent; /* Remove old background */
@@ -143,28 +138,59 @@ section + section {
     list-style: none;
     display: flex;
     gap: var(--space-s);
+    align-items: center; /* vertically center items */
+    flex-wrap: nowrap; /* prevent wrapping on wider screens */
+}
+
+.navbar .nav-links li {
+    display: inline-flex; /* ensure li sizing matches inline buttons */
+}
+
+/* Ensure nav buttons show the orange outline and consistent sizing on the top bar.
+   This is higher-specificity to avoid being accidentally overridden by other rules. */
+.navbar .nav-links .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.9rem; /* slightly tighter than .btn default for top bar */
+    border: 2px solid #FFA500 !important;
+    color: var(--color-text-headings) !important;
+    background-color: transparent !important;
+    text-decoration: none;
 }
 
 /* Redesign nav links as Text Buttons for a modern feel */
-.navbar .nav-links a {
+.btn {
+    display: inline-block;
+    text-decoration: none;
     font-family: var(--font-family-headings);
     font-weight: 500;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    padding: var(--space-s) var(--space-m);
     border-radius: var(--border-radius-medium);
-    transition: background-color var(--transition-fast), color var(--transition-fast);
+    padding: 0.5rem 1rem;
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+    border: 2px solid #FFA500;
+    color: var(--color-text-headings);
+    background-color: transparent; /* Default transparent background */
+    vertical-align: middle;
+    line-height: 1;
 }
 
-.navbar .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--color-text-primary);
-    text-decoration: none;
+.btn:hover {
+    background-color: #FFF3E0;
+    border-color: #FF7043;
+    color: var(--color-text-headings);
 }
 
-.navbar .nav-links a.active {
+.btn.active {
     color: var(--color-accent);
     font-weight: 700;
+}
+
+/* Filled/active button style */
+.btn.m3-button--filled {
+    background-color: #FFA500; /* Solid orange background */
+    color: #FFFFFF; /* White text */
+    border-color: #FFA500; /* Matching orange border */
 }
 
 /* Hamburger Menu Icon */
@@ -178,17 +204,22 @@ section + section {
     z-index: 1001;
 }
 
+/* Remove default focus outline */
+.hamburger-menu:focus {
+    outline: none;
+}
+
 .hamburger-menu .bar {
     width: 100%;
-    height: 3px;
+    height: 2px; /* Thinner bars */
     background-color: var(--color-text-headings);
     border-radius: 2px;
     transition: all var(--transition-fast);
 }
 
-/* Hamburger animation to "X" */
+/* Hamburger animation to "X" - Squeeze Effect */
 .hamburger-menu.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(0.6rem, 0.6rem);
+    transform: translateY(0.5rem) rotate(45deg);
 }
 
 .hamburger-menu.active .bar:nth-child(2) {
@@ -196,22 +227,25 @@ section + section {
 }
 
 .hamburger-menu.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(0.6rem, -0.6rem);
+    transform: translateY(-0.5rem) rotate(-45deg);
 }
 
 /* Mobile Nav Menu Overlay */
 .nav-menu {
-    /* On desktop, this is just a container */
-    display: block;
+    width: 100%; /* Take full width to position children */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Push links and avatar apart */
 }
 
 /* Hero Section */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
-    align-items: center;
+    display: flex;
+    justify-content: center;
+    /* moved content up to improve flow */
+    padding-top: 8vh;
     min-height: 80vh;
+    padding: var(--space-l);
 }
 
 .hero-content h1 { /* Changed from H2 in the new structure */
@@ -230,12 +264,30 @@ section + section {
 }
 
 .hero-content {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+.glass-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.content-card {
     background-color: var(--color-surface);
     border-radius: var(--border-radius-medium);
     padding: var(--space-l);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: var(--shadow-subtle);
-    text-align: center;
 }
 
 .hero-content p {
@@ -263,14 +315,12 @@ section + section {
 }
 
 .hero-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* This element is now a flex item in the navbar, so fixed positioning is removed. */
 }
 
 .hero-image-placeholder {
-    width: clamp(250px, 100%, 400px);
-    aspect-ratio: 1 / 1;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     overflow: hidden;
     /* Create a subtle, professional gradient border */
@@ -281,7 +331,7 @@ section + section {
 }
 
 .hero-image-placeholder:hover {
-    transform: rotate(15deg) scale(1.05);
+    /* No transform for small avatar; only brighten on hover */
     filter: brightness(1.1);
 }
 
@@ -326,7 +376,7 @@ section h2.section-title::after {
     padding: var(--space-l);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: var(--shadow-subtle);
-    max-width: 70ch;
+    max-width: 100%;
     margin: 0 auto;
     text-align: center;
 }
@@ -350,12 +400,32 @@ section h2.section-title::after {
         overflow: hidden;
         position: relative;
         width: 100%;
-        -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-        mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    }
+
+    .marquee-container::before,
+    .marquee-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100px;
+        z-index: 2;
+        pointer-events: none; /* Allow clicking through the overlay */
+    }
+
+    .marquee-container::before {
+        left: 0;
+        background: linear-gradient(to right, var(--color-background), transparent);
+    }
+
+    .marquee-container::after {
+        right: 0;
+        background: linear-gradient(to left, var(--color-background), transparent);
     }
 
     .marquee-content {
         display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping */
         /* Assuming each card is ~300px wide + 2rem gap */
         width: calc((300px + 2rem) * 12); 
         animation: scroll 40s linear infinite;
@@ -407,24 +477,26 @@ section h2.section-title::after {
         padding: var(--space-l) var(--space-m);
     }
 
-    /* Stack hero section vertically */
+    /* Mobile adjustments for avatar and hero */
     .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
+        /* keep centered layout; allow shorter height on small screens */
         min-height: auto;
         padding-top: var(--space-l);
     }
 
     .hero-content {
-        order: 2; /* Text comes after image on mobile */
+        background-color: rgba(255, 255, 255, 0.85); /* Add background for mobile readability */
+        padding: var(--space-l);
+        border-radius: var(--border-radius-medium);
     }
 
     .hero-image-container {
-        order: 1;
+        /* This element is now a flex item in the navbar, so fixed positioning is removed. */
     }
 
     .hero-image-placeholder {
-        width: 200px;
+        width: 80px;
+        height: 80px;
     }
 
     .social-icons {
@@ -448,10 +520,15 @@ section h2.section-title::after {
         height: 100vh;
         background-color: var(--color-background);
         display: flex;
+        flex-direction: column; /* Stack profile pic and links */
         justify-content: center;
         align-items: center;
         transition: left var(--transition-medium);
         z-index: 1000;
+    }
+
+    .nav-menu .hero-image-container {
+        margin-bottom: var(--space-l); /* Space between pic and links */
     }
 
     .nav-menu.active {
@@ -465,66 +542,17 @@ section h2.section-title::after {
         gap: var(--space-l);
     }
 
-    .nav-menu .nav-links a {
+    .nav-menu .nav-links .btn {
         font-size: 2rem;
         color: var(--color-text-primary);
     }
 
-    .side-by-side-container {
-        grid-template-columns: 1fr;
-    }
+    /* side-by-side container removed; About and Contact now stack vertically */
+
 }
 
-/* Preloader Styles */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    transition: opacity 0.5s ease-in-out;
-}
-
-#preloader.loaded {
-    opacity: 0;
-    pointer-events: none;
-}
-
-#percentage {
-    font-size: 2rem;
-    font-family: var(--font-family-headings);
-    color: var(--color-text-headings);
-    margin-bottom: var(--space-m);
-}
-
-.progress-bar-container {
-    width: 300px;
-    height: 8px;
-    background-color: var(--color-surface);
-    border-radius: var(--border-radius-small);
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    width: 0;
-    height: 100%;
-    background-color: var(--color-accent);
-    transition: width 0.1s linear;
-}
-
-/* Hide main content initially */
+/* Preloader is disabled, content is visible by default */
 header, main, footer {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-header.visible, main.visible, footer.visible {
     opacity: 1;
 }
 
@@ -559,8 +587,9 @@ header.visible, main.visible, footer.visible {
 /* Footer */
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    text-align: center; /* Ensure text inside is centered */
 }
 
 /* Respect reduced motion for marquee */
@@ -579,6 +608,7 @@ header.visible, main.visible, footer.visible {
     max-width: var(--content-width);
     margin: 0 auto;
     padding: var(--space-l);
+    text-align: center;
 }
 
 .notes-container h1 {
@@ -607,6 +637,21 @@ header.visible, main.visible, footer.visible {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-l);
+}
+
+/* Blog Post List on Homepage */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+}
+
+.list-centered {
+    align-items: center;
+}
+
+.notes-container .certification-card {
+    text-align: center;
 }
 
 .product-card {
@@ -661,10 +706,10 @@ header.visible, main.visible, footer.visible {
 }
 
 /* Typing Effect */
-.typing::after {
-    content: '|';
-    animation: blink 1s step-end infinite;
+#preloader {
+    display: none !important;
 }
+
 .typed::after {
     content: '|';
 }

@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog on AI, Python & Technology | Mustafa Enes Kayacı</title>
 <meta name="description" content="Read insightful articles and tutorials on Artificial Intelligence, Python programming, prompt engineering, and the latest in technology from Mustafa Enes Kayacı.">
-    <link rel="icon" href="images/imza.png" type="image/png">
+    <link rel="icon" href="/images/imza.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/theme.css">
-    <!-- Font Awesome for social icons (if needed on this page) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
+    <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <noscript>
         <style>#preloader{display:none!important} header, main, footer{opacity:1!important}</style>
     </noscript>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7KFJSLX0E"></script>
 <script>
@@ -30,6 +32,10 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="tsparticles"></div>
+    <div class="glass-overlay"></div>
+
+
     <div id="preloader">
         <div id="percentage">0%</div>
         <div class="progress-bar-container">
@@ -45,78 +51,156 @@
                 <span class="bar" aria-hidden="true"></span>
             </button>
             <div class="nav-menu" id="primary-nav">
+                <div class="hero-image-container">
+                    <div class="hero-image-placeholder">
+                        <img src="images/profile_photo.jpg" alt="Mustafa Enes Kayacı Profile Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                    </div>
+                </div>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="m3-button m3-button--text">Home</a></li>
-                    <li><a href="notes.html" class="m3-button m3-button--text">Study Notes</a></li>
-                    <li><a href="blog.html" class="m3-button m3-button--filled">Blog</a></li>
-                    <li><a href="shopping.html" class="m3-button m3-button--text">Shop</a></li>
-                    <li><a href="index.html#contact" class="m3-button m3-button--text">Contact</a></li>
+                    <li><a href="index.html" class="btn m3-button m3-button--text">Home</a></li>
+                    <li><a href="notes.html" class="btn m3-button m3-button--text">Study Notes</a></li>
+                    <li><a href="blog.html" class="btn m3-button m3-button--filled">Blog</a></li>
+                    <li><a href="shopping.html" class="btn m3-button m3-button--text">Shop</a></li>
+                    <li><a href="index.html#contact" class="btn m3-button m3-button--text">Contact</a></li>
                 </ul>
             </div>
-
-
         </nav>
     </header>
 
     <main>
         <section class="notes-container">
-            <h1>Blog</h1>
+            <div class="content-card">
+                <h1>Blog</h1>
 
-            <div class="certifications-grid">
-                <a href="blog/if-ai-says-its-conscious.html" class="certification-card-link">
-                    <div class="certification-card">
-                        <h3>If an AI Says It’s Conscious, Should We Believe It?</h3>
-                        <p>When an AI claims to have an inner world, how can we know if it’s telling the truth? This article explores the 'hard problem' of consciousness and the moral implications of creating sentient AI.</p>
-                    </div>
-                </a>
-                <a href="blog/augmented-professional-2026-workday.html" class="certification-card-link">
-                    <div class="certification-card">
-                        <h3>The Augmented Professional: A Glimpse into a 2026 Workday</h3>
-                        <p>A look into the future of work in 2026, where AI-augmented professionals collaborate with intelligent co-pilots to achieve more. Learn about the skills needed to thrive in this new era.</p>
-                    </div>
-                </a>
-                <a href="blog/algorithmic-heart-ai-loneliness.html" class="certification-card-link">
-                    <div class="certification-card">
-                        <h3>The Algorithmic Heart: Are AI Friends a Cure for Loneliness?</h3>
-                        <p>AI companions promise a cure for loneliness, but could they be making it worse? An analysis of artificial intimacy, dark patterns, and the real price of a digital friend.</p>
-                    </div>
-                </a>
-                <a href="blog/age-of-autonomous-agents.html" class="certification-card-link">
-                    <div class="certification-card">
-                        <h3>Your New Coworker Isn't Human: Welcome to the Age of Autonomous Agents</h3>
-                        <p>Discover a new class of "intelligent digital labor" that can independently plan, act, and adapt to achieve complex goals without waiting for your instructions.</p>
-                    </div>
-                </a>
-                <a href="blog/human-edge-5-skills-for-ai-era.html" class="certification-card-link">
-                    <div class="certification-card">
-                        <h3>The Human Edge: 5 Skills You Need to Thrive in the AI-Powered Era</h3>
-                        <p>As AI takes over routine tasks, the skills that make us uniquely human are becoming more valuable than ever. Discover the 5 core competencies to future-proof your career.</p>
-                    </div>
-                </a>
-                <a href="blog/how-large-language-models-work.html" class="certification-card-link">
-                    <div class="certification-card">
-                        <h3>Explain It Like I'm 5: How Do Large Language Models (LLMs) Actually Work?</h3>
-                    </div>
-                </a>
+                <div class="post-list">
+                    <a href="blog/if-ai-says-its-conscious.html" class="product-card-link">
+                        <div class="product-card">
+                            <h3>If an AI Says It’s Conscious, Should We Believe It?</h3>
+                            <p>When an AI claims to have an inner world, how can we know if it’s telling the truth? This article explores the 'hard problem' of consciousness and the moral implications of creating sentient AI.</p>
+                        </div>
+                    </a>
+                    <a href="blog/augmented-professional-2026-workday.html" class="product-card-link">
+                        <div class="product-card">
+                            <h3>The Augmented Professional: A Glimpse into a 2026 Workday</h3>
+                            <p>A look into the future of work in 2026, where AI-augmented professionals collaborate with intelligent co-pilots to achieve more. Learn about the skills needed to thrive in this new era.</p>
+                        </div>
+                    </a>
+                    <a href="blog/algorithmic-heart-ai-loneliness.html" class="product-card-link">
+                        <div class="product-card">
+                            <h3>The Algorithmic Heart: Are AI Friends a Cure for Loneliness?</h3>
+                            <p>AI companions promise a cure for loneliness, but could they be making it worse? An analysis of artificial intimacy, dark patterns, and the real price of a digital friend.</p>
+                        </div>
+                    </a>
+                    <a href="blog/age-of-autonomous-agents.html" class="product-card-link">
+                        <div class="product-card">
+                            <h3>Your New Coworker Isn't Human: Welcome to the Age of Autonomous Agents</h3>
+                            <p>Discover a new class of "intelligent digital labor" that can independently plan, act, and adapt to achieve complex goals without waiting for your instructions.</p>
+                        </div>
+                    </a>
+                    <a href="blog/human-edge-5-skills-for-ai-era.html" class="product-card-link">
+                        <div class="product-card">
+                            <h3>The Human Edge: 5 Skills You Need to Thrive in the AI-Powered Era</h3>
+                            <p>As AI takes over routine tasks, the skills that make us uniquely human are becoming more valuable than ever. Discover the 5 core competencies to future-proof your career.</p>
+                        </div>
+                    </a>
+                    <a href="blog/how-large-language-models-work.html" class="product-card-link">
+                        <div class="product-card">
+                            <h3>Explain It Like I'm 5: How Do Large Language Models (LLMs) Actually Work?</h3>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="blog.html">Blog</a>
-                <a href="notes.html">Study Notes</a>
-            </div>
             <div class="footer-copyright">
                 <p>&copy; 2025 Mustafa Enes Kayacı. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
-    <script>
-        // Page scripts are handled in external JS (animations.js)
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
     <script src="assets/js/animations.js"></script>
-    <!-- particles removed for minimalist light theme -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await tsParticles.load("tsparticles", {
+                "fullScreen": {
+                    "enable": true,
+                    "zIndex": -2
+                },
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#333333"
+                    },
+                    "shape": {
+                        "type": "circle"
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#333333",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "attract": {
+                            "enable": false
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "repulse": {
+                            "distance": 100
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+    </script>
 </body>
+</html>

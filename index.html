@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mustafa Enes Kayacı - AI & Python Developer Portfolio</title>
 <meta name="description" content="Explore the portfolio of Mustafa Enes Kayacı, an AI & Python Developer specializing in prompt engineering and building AI-powered automations. View my projects and skills.">
-    <link rel="icon" href="images/imza.png" type="image/png">
+    <link rel="icon" href="/images/imza.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
@@ -32,6 +32,9 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="tsparticles"></div>
+    <div class="glass-overlay"></div>
+
     <div id="preloader">
         <div id="percentage">0%</div>
         <div class="progress-bar-container">
@@ -47,16 +50,19 @@
                 <span class="bar" aria-hidden="true"></span>
             </button>
             <div class="nav-menu" id="primary-nav">
+                <div class="hero-image-container">
+                    <div class="hero-image-placeholder">
+                        <img src="images/profile_photo.jpg" alt="Mustafa Enes Kayacı Profile Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                    </div>
+                </div>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="m3-button m3-button--filled">Home</a></li>
-                    <li><a href="notes.html" class="m3-button m3-button--text">Study Notes</a></li>
-                    <li><a href="blog.html" class="m3-button m3-button--text">Blog</a></li>
-                    <li><a href="shopping.html" class="m3-button m3-button--text">Shop</a></li>
-                    <li><a href="index.html#contact" class="m3-button m3-button--text">Contact</a></li>
+                    <li><a href="index.html" class="btn m3-button m3-button--filled">Home</a></li>
+                    <li><a href="notes.html" class="btn m3-button m3-button--text">Study Notes</a></li>
+                    <li><a href="blog.html" class="btn m3-button m3-button--text">Blog</a></li>
+                    <li><a href="shopping.html" class="btn m3-button m3-button--text">Shop</a></li>
+                    <li><a href="index.html#contact" class="btn m3-button m3-button--text">Contact</a></li>
                 </ul>
             </div>
-
-
         </nav>
     </header>
 
@@ -66,135 +72,194 @@
             <div class="hero-content">
                 <h2>Hi, I'm <span>Mustafa Enes Kayacı</span></h2>
                 <h3>AI & Python Developer</h3>
-                <p>Passionate about leveraging artificial intelligence and Python to build innovative solutions and automate complex tasks.</p>
+
+
+                <a href="https://linktr.ee/enesyk" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1.5rem;">Download My CV</a>
 
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/mustafa-enes-kayaci/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="https://github.com/MustafaEnes123" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/eneskayaci09/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/enes_kayaci09/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://x.com/Enes2028Mustafa" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x"></i></a>
                 </div>
-            </div>
-            <div class="hero-image-container">
-                <div class="hero-image-placeholder">
-                    <img src="images/profile_photo.jpg" alt="Mustafa Enes Kayacı Profile Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
-                </div>
-            </div>
-        </section>
 
-        <section id="certifications">
-            <h2 class="section-title">Certifications</h2>
-            <div class="marquee-container">
-                <div class="marquee-content">
-                    <div class="certification-card">
-                        <h3>Google AI Essentials</h3>
-                        <p>Issued by Google</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Google Prompting Essentials</h3>
-                        <p>Issued by Google</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Essential Skills in Adobe Photoshop 2024 Professional Certificate</h3>
-                        <p>Issued by Adobe</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Career Essentials in Generative AI</h3>
-                        <p>Issued by Microsoft and LinkedIn</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Career Essentials in Project Management</h3>
-                        <p>Issued by Microsoft and LinkedIn</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Microsoft Copilot for Productivity</h3>
-                        <p>Issued by Microsoft and LinkedIn</p>
-                    </div>
+                <h3 style="margin-top: var(--space-l); margin-bottom: var(--space-m);">Certifications</h3>
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <div class="certification-card">
+                            <h3>Google AI Essentials</h3>
+                            <p>Issued by Google</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Google Prompting Essentials</h3>
+                            <p>Issued by Google</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Essential Skills in Adobe Photoshop 2024 Professional Certificate</h3>
+                            <p>Issued by Adobe</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Career Essentials in Generative AI</h3>
+                            <p>Issued by Microsoft and LinkedIn</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Career Essentials in Project Management</h3>
+                            <p>Issued by Microsoft and LinkedIn</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Microsoft Copilot for Productivity</h3>
+                            <p>Issued by Microsoft and LinkedIn</p>
+                        </div>
 
-                    <div class="certification-card">
-                        <h3>Google AI Essentials</h3>
-                        <p>Issued by Google</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Google Prompting Essentials</h3>
-                        <p>Issued by Google</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Essential Skills in Adobe Photoshop 2024 Professional Certificate</h3>
-                        <p>Issued by Adobe</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Career Essentials in Generative AI</h3>
-                        <p>Issued by Microsoft and LinkedIn</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Career Essentials in Project Management</h3>
-                        <p>Issued by Microsoft and LinkedIn</p>
-                    </div>
-                    <div class="certification-card">
-                        <h3>Microsoft Copilot for Productivity</h3>
-                        <p>Issued by Microsoft and LinkedIn</p>
+                        <div class="certification-card">
+                            <h3>Google AI Essentials</h3>
+                            <p>Issued by Google</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Google Prompting Essentials</h3>
+                            <p>Issued by Google</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Essential Skills in Adobe Photoshop 2024 Professional Certificate</h3>
+                            <p>Issued by Adobe</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Career Essentials in Generative AI</h3>
+                            <p>Issued by Microsoft and LinkedIn</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Career Essentials in Project Management</h3>
+                            <p>Issued by Microsoft and LinkedIn</p>
+                        </div>
+                        <div class="certification-card">
+                            <h3>Microsoft Copilot for Productivity</h3>
+                            <p>Issued by Microsoft and LinkedIn</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="side-by-side-container">
-            <section id="about">
-                <div class="about-content">
-                    <h3>Prompt Engineering | AI Development | Building AI-Powered Automations | Python | Graphic Designer</h3>
-                    <p>I am a dedicated AI and Python developer with a strong foundation in prompt engineering and building intelligent automation systems. My passion lies in transforming complex problems into elegant, AI-driven solutions. I also bring a creative edge as a graphic designer, ensuring that functionality is always paired with exceptional user experience.</p>
-                </div>
-            </section>
-            <section id="contact">
-                <div class="contact-content">
-                    <p>I'm always open to connecting with like-minded individuals and exploring new opportunities. The best way to reach me is through my professional network.</p>
-                    <a href="https://www.linkedin.com/in/mustafa-enes-kayaci/" target="_blank" rel="noopener noreferrer" class="m3-button m3-button--filled contact-linkedin-btn">
-                        Connect on LinkedIn
-                    </a>
-                    <p class="privacy-link">
-                        For information on how this site uses data, please see our <a href="privacy.html">Data & Privacy Policy</a>.
-                    </p>
-                </div>
-            </section>
-        </div>
+        <section id="latest-posts">
+            <h2 class="section-title">Latest Blog Posts</h2>
+            <div class="post-list">
+                <!-- Post 1 -->
+                <a href="blog/age-of-autonomous-agents.html" class="product-card-link">
+                    <div class="product-card">
+                        <h3>Your New Coworker Isn't Human: Welcome to the Age of Autonomous Agents</h3>
+                        <p>The next wave of AI is here, and it's not waiting for instructions. Meet autonomous agents: a new class of "intelligent digital labor" that can independently plan, act, and adapt...</p>
+                    </div>
+                </a>
+                <!-- Post 2 -->
+                <a href="blog/algorithmic-heart-ai-loneliness.html" class="product-card-link">
+                    <div class="product-card">
+                        <h3>The Algorithmic Heart: Are AI Friends a Cure for Loneliness, or Are They Selling It Back to Us?</h3>
+                        <p>We are living in the most connected era in history, yet many of us have never felt so alone. Is the new, high-tech solution from Silicon Valley a cure, or part of the problem?</p>
+                    </div>
+                </a>
+                <!-- Post 3 -->
+                <a href="blog/augmented-professional-2026-workday.html" class="product-card-link">
+                    <div class="product-card">
+                        <h3>The Augmented Professional: A Glimpse into a 2026 Workday</h3>
+                        <p>The "AI-augmented workforce" is no longer a buzzword—it's the daily reality. This isn't about robots replacing humans, but a powerful new partnership...</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+
 
 
     </main>
 
     <footer class="site-footer">
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="blog.html">Blog</a>
-                <a href="notes.html">Study Notes</a>
-            </div>
             <div class="footer-copyright">
                 <p>&copy; 2025 Mustafa Enes Kayacı. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="assets/js/animations.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Intersection Observer for fade-in animations
-            const sections = document.querySelectorAll('section');
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                        entry.target.classList.remove('hidden');
+        document.addEventListener('DOMContentLoaded', async () => {
+            await tsParticles.load("tsparticles", {
+                "fullScreen": {
+                    "enable": true,
+                    "zIndex": -2
+                },
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#333333"
+                    },
+                    "shape": {
+                        "type": "circle"
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#333333",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "attract": {
+                            "enable": false
+                        }
                     }
-                });
-            }, { threshold: 0.1 });
-
-            sections.forEach(section => {
-                section.classList.add('hidden');
-                observer.observe(section);
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "repulse": {
+                            "distance": 100
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
             });
         });
     </script>
-    <script src="assets/js/animations.js"></script>
-    <!-- particles removed for minimalist light theme -->
 </body>
 </html>

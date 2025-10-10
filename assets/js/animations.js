@@ -36,9 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (preloader) preloader.classList.add('loaded');
         setTimeout(() => {
             mainContent.forEach(el => el.classList.add('visible'));
-            if (document.querySelector('.hero-content')) {
-                try { typeOutAll(); } catch (e) { console.warn('Typing failed', e); }
-            }
+            // Typing effect disabled by user request
+            // if (document.querySelector('.hero-content')) {
+            //     try { typeOutAll(); } catch (e) { console.warn('Typing failed', e); }
+            // }
         }, 250);
     }
 

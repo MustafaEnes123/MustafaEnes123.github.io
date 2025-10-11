@@ -664,6 +664,7 @@ header, main, footer {
     height: 100%;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .product-card:hover {
